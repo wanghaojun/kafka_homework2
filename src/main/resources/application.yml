@@ -1,0 +1,39 @@
+spring:
+  kafka:
+    listener:
+      missing-topics-fatal: false
+    producer:
+      bootstrap-servers: localhost:9092
+      acks: all
+      retries: 3
+      batch-size: 16384
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: groupA
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+
+
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://172.31.43.7:3306/kafka
+    username: root
+    password: 123456
+
+file:
+  path: D:\project\spring-kafka\userBehavior
+  sort-path: D:\project\spring-kafka\userBehavior-sort
+server:
+  port: 8082
